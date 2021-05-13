@@ -127,13 +127,31 @@ var handleSubmit = function handleSubmit(e) {
 
 var form = document.querySelector("[js-form]");
 var emailInput = document.querySelector("[js-input]");
+var msgSuccess = document.querySelector("[js-form-success]");
+var msgError = document.querySelector("[js-form-error]");
 window.addEventListener("load", function (event) {
   console.log("page is fully loaded");
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     console.log("submitted");
     var inputVal = emailInput.value;
-    console.log(inputVal);
+    var formData = {
+      email: inputVal
+    };
+    fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: new URLSearchParams(formData).toString()
+    }).then(function () {
+      console.log("Form successfully submitted");
+      msgSuccess.classList.remove("hide");
+    }).catch(function (error) {
+      console.log(error);
+      msgSuccess.classList.add("hide");
+      msgError.classList.remove("hide");
+    });
   });
 });
 },{}],"../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -164,7 +182,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61854" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65299" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

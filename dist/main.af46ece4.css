@@ -209,6 +209,15 @@ button:focus {
   box-shadow: none;
 }
 
+.form-message {
+  text-align: center;
+  color: white;
+}
+
+.hide {
+  display: none;
+}
+
 @media screen and (min-width: 640px) {
   .subtitle {
     font-size: 4rem;
