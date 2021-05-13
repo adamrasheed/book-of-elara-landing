@@ -135,9 +135,7 @@ window.addEventListener("load", function (event) {
     e.preventDefault();
     console.log("submitted");
     var inputVal = emailInput.value;
-    var formData = {
-      email: inputVal
-    };
+    var formData = new FormData(form);
     fetch("/", {
       method: "POST",
       headers: {
@@ -147,6 +145,7 @@ window.addEventListener("load", function (event) {
     }).then(function () {
       console.log("Form successfully submitted");
       msgSuccess.classList.remove("hide");
+      msgError.classList.add("hide");
     }).catch(function (error) {
       console.log(error);
       msgSuccess.classList.add("hide");
@@ -182,7 +181,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65299" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54221" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

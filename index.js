@@ -19,9 +19,7 @@ window.addEventListener("load", (event) => {
 
     const inputVal = emailInput.value;
 
-    const formData = {
-      email: inputVal,
-    };
+    const formData = new FormData(form);
 
     fetch("/", {
       method: "POST",
